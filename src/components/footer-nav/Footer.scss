@@ -1,0 +1,61 @@
+.footer-container {
+  display: flex;
+  align-items: center;
+  background-color: #0d263e;
+  height: 250px;
+}
+
+.footer-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-top: 1px solid #888;
+  border-bottom: 1px solid #888;
+
+  .kinema-logo {
+    width: 30%;
+
+    a {
+      font-size: 2rem;
+    }
+
+    p {
+      color: #fff;
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+  }
+
+  .footer-item-container {
+    width: 50%;
+  }
+
+  .item-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+
+    .item {
+      flex: 0 0 calc(25% - 16px);
+
+      a {
+        font-size: 0.9rem;
+        color: #fff;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.socials {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+
+  .social-icon {
+    color: #fff;
+    cursor: pointer;
+  }
+}
