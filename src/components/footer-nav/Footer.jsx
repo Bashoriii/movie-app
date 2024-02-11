@@ -21,7 +21,7 @@ const TopNav = () => {
           <div className="footer-item-container">
             <div className="item-list">
               <div className="item">
-                <Link to="#">Gift</Link>
+                <Link to="#">Gift Card</Link>
               </div>
               <div className="item">
                 <Link to="#">Careers</Link>

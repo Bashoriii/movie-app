@@ -1,0 +1,32 @@
+.top-nav-container {
+  background-color: #0d263e;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+
+.kinema-logo {
+  a {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #fff;
+  }
+}
+
+.nav-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  a {
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+}
