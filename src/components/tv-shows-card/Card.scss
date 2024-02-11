@@ -1,0 +1,30 @@
+.tv-shows-cards {
+  width: calc((100% - 5rem) / 6);
+  height: 100%;
+
+  @media (max-width: 768px) {
+    width: calc((100% - 3rem) / 4);
+  }
+}
+
+.poster-image {
+  height: 202px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+}
+
+.title-and-year {
+  p {
+    margin-bottom: 7px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  span {
+    color: #686868;
+  }
+}
