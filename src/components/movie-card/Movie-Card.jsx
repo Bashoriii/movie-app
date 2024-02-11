@@ -1,9 +1,10 @@
-import './Card-Slider.scss';
+import { Link } from 'react-router-dom';
+import './Movie-Card.scss';
 
-const CardSlider = ({ poster, title, date }) => {
+const movieCard = ({ id, poster, title, date }) => {
   return (
     <>
-      <div className="card">
+      <Link to={`/movie/${id}`} className="movie-cards">
         <div className="poster-image">
           <img src={`http://image.tmdb.org/t/p/w500/${poster}`} alt="poster" />
         </div>
@@ -11,9 +12,9 @@ const CardSlider = ({ poster, title, date }) => {
           <p className="title">{title}</p>
           <span>{new Date(date).getFullYear()}</span>
         </div>
-      </div>
+      </Link>
     </>
   );
 };
 
-export default CardSlider;
+export default movieCard;

@@ -1,0 +1,23 @@
+.card-slider {
+  margin: 1rem 0;
+}
+
+.swiper.swiper-initialized.swiper-horizontal {
+  overflow-y: hidden;
+  overflow-x: scroll;
+
+  // &:hover {
+  //   .swiper-button-next {
+  //     display: block !important;
+  //   }
+  // }
+}
+
+// .swiper-button-prev {
+//   display: none !important;
+// }
+
+// .swiper-button-next {
+//   display: none !important;
+//   color: #0d263e !important;
+// }
