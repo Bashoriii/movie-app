@@ -4,7 +4,7 @@ import './Card.scss';
 const tvCard = ({ id, poster, title, date }) => {
   return (
     <>
-      <Link to={`/tv-shows/${id}`} className="tv-shows-cards">
+      <Link to={`/tv-shows-detail/${id}`} className="tv-shows-cards">
         <div className="poster-image">
           <img src={`http://image.tmdb.org/t/p/w500/${poster}`} alt="poster" />
         </div>

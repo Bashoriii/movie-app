@@ -15,9 +15,9 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} exact />
           <Route path="/tv-shows" element={<TVShows />} />
-          <Route path="/tv-shows/:id" element={<DetailTV />} />
+          <Route path="/tv-shows-detail/:id" element={<DetailTV />} />
           <Route path="/watchlist" element={<Watchlist />} />
-          <Route path="/movie/:id" element={<DetailCard />} />
+          <Route path="/movie-detail/:id" element={<DetailCard />} />
         </Routes>
         <FooterNav />
       </div>

@@ -44,7 +44,7 @@ const recomendTV = () => {
             {recomend.slice(0, 18).map((recomend) =>
               recomend.poster_path ? (
                 <SwiperSlide key={recomend.id} className="card-slider">
-                  <Link to={`/movie/${id}`} className="card">
+                  <Link to={`/tv-shows-detail/${recomend.id}`} className="card">
                     <div className="poster-image">
                       <img
                         src={`http://image.tmdb.org/t/p/w500/${recomend.poster_path}`}

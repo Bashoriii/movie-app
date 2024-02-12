@@ -31,7 +31,7 @@ const detailMovieCard = () => {
     };
 
     movieDetail();
-  }, []);
+  }, [id]);
 
   return (
     <>
