@@ -28,7 +28,6 @@ const loginBtn = () => {
 
         const resultToken = response.data.request_token;
         window.localStorage.setItem('request_token', resultToken);
-        console.log(resultToken);
       } catch {
         console.log('Cant request token');
       }
@@ -38,8 +37,8 @@ const loginBtn = () => {
   }, []);
 
   const getApprove = async () => {
-    const tokenAccess = window.localStorage.getItem('request_token');
-    let reqUrl = `https://www.themoviedb.org/auth/access?request_token=${tokenAccess}`;
+    const reqToken = window.localStorage.getItem('request_token');
+    let reqUrl = `https://www.themoviedb.org/auth/access?request_token=${reqToken}`;
 
     const athorUrl = window.open(reqUrl, '_blank');
 
@@ -54,7 +53,7 @@ const loginBtn = () => {
 
     try {
       const response = await axios.post(
-        `https://api.themoviedb.org/4/auth/access_token?request_token=${tokenAccess}`,
+        `https://api.themoviedb.org/4/auth/access_token?request_token=${reqToken}`,
         {},
         { headers }
       );
