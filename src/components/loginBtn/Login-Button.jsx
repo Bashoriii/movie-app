@@ -1,10 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Icon from '@mdi/react';
-import { mdiLogin } from '@mdi/js';
+import { mdiLogin, mdiLogout, mdiPower } from '@mdi/js';
 import './Login-Button.scss';
 
 const loginBtn = () => {
+  const [isLogin, setIsLogin] = useState(() => {
+    return !!localStorage.getItem('access_token');
+  });
   const bearerToken = import.meta.env.VITE_TMDB_TOKEN;
 
   const headers = {
@@ -12,10 +15,6 @@ const loginBtn = () => {
     'content-type': 'application/json',
     Authorization: `Bearer ${bearerToken}`,
   };
-
-  const redir = JSON.stringify({
-    redirect_to: 'http://localhost:5173/',
-  });
 
   useEffect(() => {
     const reqToken = async () => {
@@ -59,17 +58,30 @@ const loginBtn = () => {
       );
 
       window.localStorage.setItem('access_token', response.data.access_token);
+      setIsLogin(true);
       console.log(response.data);
     } catch (error) {
-      console.log(error);
+      console.log(error, 'Cant get athorized token from user');
     }
+  };
+
+  const logout = () => {
+    localStorage.clear();
+    setIsLogin(false);
+    window.location.reload();
   };
 
   return (
     <>
-      <button className="login-button" onClick={getApprove}>
-        <Icon path={mdiLogin} size={1} />
-      </button>
+      {!isLogin ? (
+        <button className="login-button" onClick={getApprove}>
+          <Icon path={mdiLogin} size={1} />
+        </button>
+      ) : (
+        <button className="logout-button" onClick={logout}>
+          <Icon path={mdiPower} size={1} />
+        </button>
+      )}
     </>
   );
 };
