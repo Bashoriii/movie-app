@@ -8,6 +8,7 @@ const loginBtn = () => {
   const [isLogin, setIsLogin] = useState(() => {
     return !!localStorage.getItem('access_token');
   });
+
   const bearerToken = import.meta.env.VITE_TMDB_TOKEN;
 
   const headers = {
@@ -58,8 +59,8 @@ const loginBtn = () => {
       );
 
       window.localStorage.setItem('access_token', response.data.access_token);
+      window.localStorage.setItem('account_id', response.data.account_id);
       setIsLogin(true);
-      console.log(response.data);
     } catch (error) {
       console.log(error, 'Cant get athorized token from user');
     }
