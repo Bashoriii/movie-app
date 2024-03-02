@@ -11,8 +11,12 @@ import './Detail-Card.scss';
 const detailMovieCard = () => {
   const [detail, setDetail] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;
+  const bearerToken = import.meta.env.VITE_TMDB_TOKEN;
   const { id } = useParams();
+
+  const account_id = window.localStorage.getItem('account_id');
 
   useEffect(() => {
     const movieDetail = async () => {
@@ -32,6 +36,33 @@ const detailMovieCard = () => {
 
     movieDetail();
   }, [id]);
+
+  const addToWatchlist = async () => {
+    try {
+      const body = {
+        media_type: 'movie',
+        media_id: id,
+        watchlist: true,
+      };
+
+      const headers = {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        Authorization: `Bearer ${bearerToken}`,
+      };
+
+      const response = await axios.post(
+        `https://api.themoviedb.org/3/account/${account_id}/watchlist?api_key=${apiKey}`,
+        body,
+        { headers }
+      );
+
+      const resultAddToWatchlist = response.data;
+      console.log(resultAddToWatchlist);
+    } catch (error) {
+      console.log('Cant add to watchlist movie', error);
+    }
+  };
 
   return (
     <>
@@ -66,30 +97,23 @@ const detailMovieCard = () => {
                   </p>
                 </div>
                 <div className="bookmark-and-fav">
-                  <Link
+                  <Icon
                     data-tooltip-id="favorite"
                     data-tooltip-content="Add to Favorites"
-                    to="#"
-                  >
-                    <Icon
-                      className="favorite-icon"
-                      path={mdiHeart}
-                      size={2.2}
-                    />
-                  </Link>
-                  <Link
-                    data-tooltip-id="bookmark"
-                    data-tooltip-content="Add to Bookmark"
-                    to="#"
-                  >
-                    <Icon
-                      className="bookmark-icon"
-                      path={mdiBookmark}
-                      size={2.2}
-                    />
-                  </Link>
+                    className="favorite-icon"
+                    path={mdiHeart}
+                    size={2.2}
+                  />
+                  <Icon
+                    onClick={addToWatchlist}
+                    data-tooltip-id="watchlist"
+                    data-tooltip-content="Add to Watchlist"
+                    className="bookmark-icon"
+                    path={mdiBookmark}
+                    size={2.2}
+                  />
                   <Tooltip id="favorite" />
-                  <Tooltip id="bookmark" />
+                  <Tooltip id="watchlist" />
                 </div>
                 <div className="overview">
                   <p className="overview-title">Overview</p>

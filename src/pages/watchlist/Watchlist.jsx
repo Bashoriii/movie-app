@@ -3,34 +3,34 @@ import { useState, useEffect } from 'react';
 import Cards from '@components/movie-card/Movie-Card';
 import './Watchlist.scss';
 
-const WatchlistMovieTV = (id) => {
+const WatchlistMovieTV = () => {
   const [watch, setWatchList] = useState([]);
 
+  const fetchWatchlist = async () => {
+    try {
+      const apiKey = import.meta.env.VITE_TMDB_API_KEY;
+      const bearerToken = import.meta.env.VITE_TMDB_TOKEN;
+      const account_id = window.localStorage.getItem('account_id');
+
+      const headers = {
+        accept: 'application/json',
+        Authorization: `Bearer ${bearerToken}`,
+      };
+
+      const response = await axios.get(
+        `https://api.themoviedb.org/4/account/${account_id}/movie/watchlist?api_key=${apiKey}`,
+        { headers }
+      );
+
+      const resultWatchlist = response.data.results;
+      setWatchList(resultWatchlist);
+      console.log(resultWatchlist);
+    } catch (error) {
+      console.log(error, 'Cant get watchlist');
+    }
+  };
+
   useEffect(() => {
-    const fetchWatchlist = async () => {
-      try {
-        const apiKey = import.meta.env.VITE_TMDB_API_KEY;
-        const bearerToken = import.meta.env.VITE_TMDB_TOKEN;
-        const account_id = window.localStorage.getItem('account_id');
-
-        const headers = {
-          accept: 'application/json',
-          Authorization: `Bearer ${bearerToken}`,
-        };
-
-        const response = await axios.get(
-          `https://api.themoviedb.org/4/account/${account_id}/movie/watchlist?api_key=${apiKey}`,
-          { headers }
-        );
-
-        const resultWatchlist = response.data.results;
-        setWatchList(resultWatchlist);
-        console.log(resultWatchlist);
-      } catch (error) {
-        console.log(error, 'Cant get watchlist');
-      }
-    };
-
     fetchWatchlist();
   }, []);
 

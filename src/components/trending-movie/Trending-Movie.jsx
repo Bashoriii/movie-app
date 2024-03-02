@@ -7,7 +7,6 @@ import './Trending-Movie.scss';
 const trendingMovie = () => {
   const [trendingMovie, setTrendingMovie] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
   useEffect(() => {
