@@ -8,13 +8,11 @@ import DetailTV from '@pages/detail-tv/Detail-TV';
 import TopNav from '@components/top-nav/Top-Nav';
 import FooterNav from '@components/footer-nav/Footer';
 import AuthRoute from '@components/middleware/authRoute';
-import AlertModal from '@components/login-alert/Login-Alert';
 const App = () => {
   return (
     <>
       <div className="wrapper">
         <TopNav />
-        {/* <AlertModal /> */}
         <Routes>
           <Route path="/" element={<Home />} exact />
           <Route path="/tv-shows" element={<TVShows />} />

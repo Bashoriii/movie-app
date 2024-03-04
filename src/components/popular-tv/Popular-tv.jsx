@@ -18,7 +18,6 @@ const popularTv = () => {
         );
 
         const resultPopular = response.data.results;
-        console.log(resultPopular);
         setPopularTv(resultPopular);
         setIsLoading(false);
       } catch (error) {
