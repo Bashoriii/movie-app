@@ -1,0 +1,51 @@
+.remove-alert-container {
+  width: 40%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  background-color: #fed8d7;
+  border-radius: 3px;
+  border-left: 6px solid #c63031;
+  position: absolute;
+  right: -100px;
+
+  @keyframes bounce {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    20% {
+      transform: translateX(-20px);
+      opacity: 1;
+    }
+    40% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    60% {
+      transform: translateX(-10px);
+      opacity: 1;
+    }
+    80% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 0.5;
+    }
+  }
+
+  .alert-message {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1rem;
+    color: #000000;
+  }
+
+  .remove-icon-alert {
+    color: #c63031;
+  }
+}

@@ -1,8 +1,8 @@
-import './Login-Alert.scss';
 import Icon from '@mdi/react';
 import { mdiCheckCircle } from '@mdi/js';
+import './Success-Alert.scss';
 
-const loginAlert = () => {
+const loginAlert = ({ theMsg }) => {
   return (
     <>
       <div
@@ -11,11 +11,11 @@ const loginAlert = () => {
           right: 0,
           animation: 'bounce 1.3s ease',
         }}
-        className="alert-modal-container bounce"
+        className="success-alert-container bounce"
       >
         <p className="alert-message">
-          <Icon className="check-icon" path={mdiCheckCircle} size={1} /> Login
-          Successful!
+          <Icon className="check-icon" path={mdiCheckCircle} size={1} />{' '}
+          {theMsg}
         </p>
       </div>
     </>

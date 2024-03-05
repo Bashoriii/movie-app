@@ -1,4 +1,4 @@
-.alert-modal-container {
+.success-alert-container {
   width: 40%;
   height: 50px;
   display: flex;
@@ -42,6 +42,7 @@
     justify-content: center;
     align-items: center;
     margin-left: 1rem;
+    color: #000000;
   }
 
   .check-icon {

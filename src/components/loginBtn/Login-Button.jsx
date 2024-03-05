@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Icon from '@mdi/react';
-import { mdiLogin, mdiLogout, mdiPower } from '@mdi/js';
-import AlertModal from '@components/login-alert/Login-Alert';
+import { mdiLogin, mdiPower } from '@mdi/js';
+import { useNavigate } from 'react-router-dom';
+import AlertModal from '@components/success-alert/Success-Alert';
 import './Login-Button.scss';
 
 const loginBtn = () => {
@@ -10,6 +11,7 @@ const loginBtn = () => {
     return !!localStorage.getItem('access_token');
   });
   const [alertMsg, setAlertMsg] = useState(false);
+  const navigate = useNavigate();
 
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;
   const bearerToken = import.meta.env.VITE_TMDB_TOKEN;
@@ -90,6 +92,7 @@ const loginBtn = () => {
   const logout = () => {
     localStorage.clear();
     setIsLogin(false);
+    navigate('/');
     window.location.reload();
   };
 
@@ -108,7 +111,7 @@ const loginBtn = () => {
           <Icon path={mdiPower} size={1} />
         </button>
       )}
-      {alertMsg && <AlertModal />}
+      {alertMsg && <AlertModal theMsg={'Login Successful!'} />}
     </>
   );
 };
