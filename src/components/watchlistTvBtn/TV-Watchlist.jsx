@@ -1,27 +1,26 @@
 import axios from 'axios';
 import Icon from '@mdi/react';
 import { useState, useEffect } from 'react';
-import { mdiBookmark, mdiCloseThick } from '@mdi/js';
-import { Tooltip } from 'react-tooltip';
 import { useParams } from 'react-router-dom';
+import { mdiBookmark, mdiCloseThick } from '@mdi/js';
 import SuccessAlert from '@components/success-alert/Success-Alert';
 import RemoveAlert from '@components/remove-alert/Remove-Alert';
-import './Watch-Button.scss';
+import { Tooltip } from 'react-tooltip';
+import './TV-Watchlist.scss';
 
-const watchButton = () => {
+const TvWatchlist = () => {
   const [isAdded, setIsAdded] = useState(false);
   const [successAlert, setsuccessAlert] = useState(false);
   const [removeAlert, setremoveAlert] = useState(false);
+  const { id } = useParams();
 
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;
   const bearerToken = import.meta.env.VITE_TMDB_TOKEN;
-
-  const { id } = useParams();
   const account_id = window.localStorage.getItem('account_id');
   const session_id = window.localStorage.getItem('session_id');
 
   const body = {
-    media_type: 'movie',
+    media_type: 'tv',
     media_id: id,
     watchlist: true,
   };
@@ -32,7 +31,7 @@ const watchButton = () => {
     Authorization: `Bearer ${bearerToken}`,
   };
 
-  const addToWatchlist = async () => {
+  const addTvToWatchlist = async () => {
     try {
       const response = await axios.post(
         `https://api.themoviedb.org/3/account/${account_id}/watchlist?api_key=${apiKey}`,
@@ -40,7 +39,7 @@ const watchButton = () => {
         { headers }
       );
 
-      const resultAddToWatchlist = response.data;
+      const resultAddTvWatchlist = response.data;
       setIsAdded(true);
       setsuccessAlert(true);
 
@@ -48,14 +47,14 @@ const watchButton = () => {
         setsuccessAlert(false);
       }, 1300);
     } catch (error) {
-      console.log('Cant add to watchlist movie', error);
+      console.log(error);
     }
   };
 
-  const removeWatchlist = async () => {
+  const removeTvWatchlist = async () => {
     try {
       const body = {
-        media_type: 'movie',
+        media_type: 'tv',
         media_id: id,
         watchlist: false,
       };
@@ -86,7 +85,7 @@ const watchButton = () => {
 
   const statusWatchlist = async () => {
     const response = await axios.get(
-      `https://api.themoviedb.org/3/movie/${id}/account_states?api_key=${apiKey}&session_id=${session_id}`
+      `https://api.themoviedb.org/3/tv/${id}/account_states?api_key=${apiKey}&session_id=${session_id}`
     );
 
     const resultStatus = response.data.watchlist;
@@ -100,9 +99,9 @@ const watchButton = () => {
   return (
     <>
       {!isAdded ? (
-        <div className="watchlist-btn">
+        <div className="tv-watchlist-btn">
           <Icon
-            onClick={addToWatchlist}
+            onClick={addTvToWatchlist}
             data-tooltip-id="watchlist"
             data-tooltip-content="Add to Watchlist"
             className="bookmark-icon"
@@ -112,16 +111,16 @@ const watchButton = () => {
           <Tooltip id="watchlist" />
         </div>
       ) : (
-        <div className="remove-btn">
+        <div className="tv-watchlist-btn">
           <Icon
-            onClick={removeWatchlist}
-            data-tooltip-id="remove"
+            onClick={removeTvWatchlist}
+            data-tooltip-id="watchlist"
             data-tooltip-content="Remove from Watchlist"
             className="remove-icon"
             path={mdiCloseThick}
             size={2.2}
           />
-          <Tooltip id="remove" />
+          <Tooltip id="watchlist" />
         </div>
       )}
       {successAlert && <SuccessAlert theMsg={'Added to Watchlist!'} />}
@@ -130,4 +129,4 @@ const watchButton = () => {
   );
 };
 
-export default watchButton;
+export default TvWatchlist;

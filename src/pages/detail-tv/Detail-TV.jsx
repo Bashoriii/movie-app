@@ -6,6 +6,7 @@ import axios from 'axios';
 import Icon from '@mdi/react';
 import { mdiHeart, mdiBookmark } from '@mdi/js';
 import { Tooltip } from 'react-tooltip';
+import TvWatchlistBtn from '@components/watchlistTvBtn/TV-Watchlist';
 import './Detail-TV.scss';
 
 const detailTvCard = () => {
@@ -31,7 +32,7 @@ const detailTvCard = () => {
     };
 
     tvDetail();
-  }, []);
+  }, [id]);
 
   return (
     <>
@@ -68,30 +69,17 @@ const detailTvCard = () => {
                   </p>
                 </div>
                 <div className="bookmark-and-fav">
-                  <Link
-                    data-tooltip-id="favorite"
-                    data-tooltip-content="Add to Favorites"
-                    to="#"
-                  >
+                  <div className="favorite-btn">
                     <Icon
+                      data-tooltip-id="favorite"
+                      data-tooltip-content="Add to Favorites"
                       className="favorite-icon"
                       path={mdiHeart}
                       size={2.2}
                     />
-                  </Link>
-                  <Link
-                    data-tooltip-id="bookmark"
-                    data-tooltip-content="Add to Bookmark"
-                    to="#"
-                  >
-                    <Icon
-                      className="bookmark-icon"
-                      path={mdiBookmark}
-                      size={2.2}
-                    />
-                  </Link>
-                  <Tooltip id="favorite" />
-                  <Tooltip id="bookmark" />
+                    <Tooltip id="favorite" />
+                  </div>
+                  <TvWatchlistBtn></TvWatchlistBtn>
                 </div>
                 <div className="overview">
                   <p className="overview-title">Overview</p>

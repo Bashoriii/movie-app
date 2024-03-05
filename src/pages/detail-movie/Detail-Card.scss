@@ -50,14 +50,18 @@
   }
 }
 
-.favorite-icon,
-.bookmark-icon {
-  margin-right: 1rem;
-  padding: 1rem;
-  color: #fff;
-  background-color: #0d263e;
-  border-radius: 50%;
-  cursor: pointer;
+.bookmark-and-fav {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+
+  .favorite-icon {
+    padding: 1rem;
+    color: #fff;
+    background-color: #0d263e;
+    border-radius: 50%;
+    cursor: pointer;
+  }
 }
 
 .overview-title {
