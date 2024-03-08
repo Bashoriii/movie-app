@@ -79,15 +79,6 @@ const detailMovieCard = () => {
                     <Tooltip id="favorite" />
                   </div>
                   <WatchBtn />
-                  {/* <Icon
-                    onClick={addToWatchlist}
-                    data-tooltip-id="watchlist"
-                    data-tooltip-content="Add to Watchlist"
-                    className="bookmark-icon"
-                    path={mdiBookmark}
-                    size={2.2}
-                  />
-                  <Tooltip id="watchlist" /> */}
                 </div>
                 <div className="overview">
                   <p className="overview-title">Overview</p>
