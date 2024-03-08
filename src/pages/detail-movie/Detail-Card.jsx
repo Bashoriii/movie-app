@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Loading from '@components/loading/Loading';
-import Recomend from '@components/movie-recomendation/Recomendation';
+import Recomend from '@components/movie/movie-recomendation/Recomendation';
+import WatchBtn from '@components/movie/watchBtn/Watch-Button';
 import axios from 'axios';
 import Icon from '@mdi/react';
 import { mdiHeart, mdiBookmark } from '@mdi/js';
 import { Tooltip } from 'react-tooltip';
-import WatchBtn from '@components/watchBtn/Watch-Button';
 import './Detail-Card.scss';
 
 const detailMovieCard = () => {

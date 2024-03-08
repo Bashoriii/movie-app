@@ -1,5 +1,5 @@
-import TrendingMovie from '@components/trending-movie/Trending-Movie';
-import NowPlaying from '@components/nowplay-movie/Nowplay-Movie';
+import TrendingMovie from '@components/movie/trending-movie/Trending-Movie';
+import NowPlaying from '@components/movie/nowplay-movie/Nowplay-Movie';
 import './Home.scss';
 
 const Home = () => {

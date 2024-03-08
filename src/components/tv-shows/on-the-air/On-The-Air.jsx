@@ -1,31 +1,31 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import TVShow from '@components/tv-shows-card/Card';
+import TVShow from '@components/tv-shows/tv-shows-card/Card';
 import Loading from '@components/loading/Loading';
-import './Popular-tv.scss';
+import './On-The-Air.scss';
 
-const popularTv = () => {
-  const [popularTv, setPopularTv] = useState([]);
+const onTheAir = () => {
+  const [onAir, setOnAir] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
   useEffect(() => {
-    const popularTvs = async () => {
+    const onAirTv = async () => {
       try {
         setIsLoading(true);
         const response = await axios.get(
-          `https://api.themoviedb.org/3/tv/top_rated?api_key=${apiKey}`
+          `https://api.themoviedb.org/3/tv/on_the_air?api_key=${apiKey}`
         );
 
         const resultPopular = response.data.results;
-        setPopularTv(resultPopular);
+        setOnAir(resultPopular);
         setIsLoading(false);
       } catch (error) {
         console.log('Cant request popular TV', error);
       }
     };
 
-    popularTvs();
+    onAirTv();
   }, []);
 
   return (
@@ -34,13 +34,13 @@ const popularTv = () => {
         <Loading />
       ) : (
         <div className="popular-tv-container">
-          {popularTv.slice(0, 18).map((popular) => (
+          {onAir.slice(0, 18).map((onair) => (
             <TVShow
-              id={popular.id}
-              key={popular.id}
-              poster={popular.poster_path}
-              title={popular.name}
-              date={popular.first_air_date}
+              id={onair.id}
+              key={onair.id}
+              poster={onair.poster_path}
+              title={onair.name}
+              date={onair.first_air_date}
             />
           ))}
         </div>
@@ -49,4 +49,4 @@ const popularTv = () => {
   );
 };
 
-export default popularTv;
+export default onTheAir;

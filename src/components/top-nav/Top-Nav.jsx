@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import LoginBtn from '@components/loginBtn/Login-Button';
+import LoginBtn from '@components/login/loginBtn/Login-Button';
 import './Top-Nav.scss';
 
 const TopNav = () => {

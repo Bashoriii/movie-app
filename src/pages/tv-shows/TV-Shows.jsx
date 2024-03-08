@@ -1,5 +1,5 @@
-import PopularTV from '@components/popular-tv/Popular-tv';
-import OnAir from '@components/on-the-air/On-The-Air';
+import PopularTV from '@components/tv-shows/popular-tv/Popular-tv';
+import OnAir from '@components/tv-shows/on-the-air/On-The-Air';
 
 const Home = () => {
   return (

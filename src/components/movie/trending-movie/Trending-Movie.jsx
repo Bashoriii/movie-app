@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import Cards from '@components/movie-card/Movie-Card';
+import Cards from '@components/movie/movie-card/Movie-Card';
 import Loading from '@components/loading/Loading';
 import './Trending-Movie.scss';
 

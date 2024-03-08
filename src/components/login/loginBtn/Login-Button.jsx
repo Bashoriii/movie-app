@@ -77,7 +77,6 @@ const loginBtn = () => {
 
       const resultSession = createSession.data.session_id;
       window.localStorage.setItem('session_id', resultSession);
-      console.log(resultSession);
       setIsLogin(true);
       setAlertMsg(true);
 

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Loading from '@components/loading/Loading';
-import TVRecomend from '@components/tv-recomendation/Recomendations';
+import TVRecomend from '@components/tv-shows/tv-recomendation/Recomendations';
+import TvWatchlistBtn from '@components/tv-shows/watchlistTvBtn/TV-Watchlist';
 import axios from 'axios';
 import Icon from '@mdi/react';
-import { mdiHeart, mdiBookmark } from '@mdi/js';
+import { mdiHeart } from '@mdi/js';
 import { Tooltip } from 'react-tooltip';
-import TvWatchlistBtn from '@components/watchlistTvBtn/TV-Watchlist';
 import './Detail-TV.scss';
 
 const detailTvCard = () => {

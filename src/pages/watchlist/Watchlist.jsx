@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import MovieCards from '@components/movie-card/Movie-Card';
-import TvCards from '@components/tv-shows-card/Card';
+import MovieCards from '@components/movie/movie-card/Movie-Card';
+import TvCards from '@components/tv-shows/tv-shows-card/Card';
 import Loading from '@components/loading/Loading';
 import NoWatchlist from '@components/no-watchlist/No-Watchlist';
 import './Watchlist.scss';
